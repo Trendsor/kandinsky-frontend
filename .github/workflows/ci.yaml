@@ -1,0 +1,21 @@
+name: Frontend CI
+on:
+  pull_request:
+    paths:
+      - 'charts/frontend/**'
+      - 'src/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Build and Test
+        run: |
+          npm ci
+          npm run test
+      - name: Lint Helm Chart
+        run: helm lint charts/frontend

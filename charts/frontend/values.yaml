@@ -1,0 +1,8 @@
+replicaCount: 2
+image:
+  repository: myregistry/frontend
+  tag: latest
+service:
+  port: 3000
+backend:
+  url: "http://exchange-api:9000"
